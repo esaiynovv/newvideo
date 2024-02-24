@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Фоновое видео со звуком</title>
+<style>
+  /* Стили для фонового видео */
+  .background-video {
+    position: fixed; /* Фиксированное положение */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Минимальная ширина */
+    min-height: 100%; /* Минимальная высота */
+    z-index: -1; /* Помещаем видео за содержимым страницы */
+  }
+  /* Стили для кнопки воспроизведения */
+  .play-button {
+    position: fixed; /* Фиксированное положение */
+    top: 50%; /* Центрирование по вертикали */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translate(-50%, -50%); /* Финальное центрирование */
+    z-index: 2; /* Помещаем кнопку над видео */
+    font-size: 20px; /* Размер шрифта */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+  }
+</style>
+</head>
+<body>
+
+<video autoplay loop playsinline muted class="background-video" id="backgroundVideo">
+  <source src="VIDEO-2024-02-23-08-57-01.mp4" type="video/mp4">
+  Ваш браузер не поддерживает HTML5 видео.
+</video>
+
+<button class="play-button" id="playButton">Воспроизвести со звуком</button>
+
+<script>
+  const video = document.getElementById('backgroundVideo');
+  const button = document.getElementById('playButton');
+  
+  button.onclick = function() {
+    if (video.muted) {
+      video.muted = false;
+      button.style.display = 'none'; // Скрываем кнопку после включения звука
+    }
+  };
+</script>
+
+</body>
+</html>
